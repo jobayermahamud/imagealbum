@@ -13,6 +13,16 @@
             margin-bottom: 10px;
         }
 
+        marquee{
+            font-weight: bold;
+            font-size:20px;
+        }
+
+        h5{
+            font-weight: bold;
+            font-size:20px;
+        }
+
         /* Style the Image Used to Trigger the Modal */
 #myImg {
   border-radius: 5px;
@@ -111,9 +121,10 @@
             var imageContent='';
 
             for(var i=(images.length-1);i>=0;i--){
+                 let titleLength= images[i].title.length > 10 ? `<marquee direction="left">${images[i].title}</marquee>` : `<h5>${images[i].title}</h5>`;
                  imageContent+=`<div id="${images[i].id}" class="col-xs-12 col-sm-6 col-md-3 col-lg-2">
                                  <img class="img-fluid img-thumbnail" style="width:100%;height:200px" src="{{env('IMG_URL').'/'}}${images[i].img_url}"  alt="${images[i].title}" >
-                                 <h5>${images[i].title}</h5>
+                                 ${titleLength}
                                  <i ref="${images[i].id}" style="margin-top:3px;margin-bottom:3px" type="delete_knws" ref="105" class="btn btn-danger btn-sm fas fa-trash-alt">&nbsp;Remove</i> 
              
                              </div>`;
@@ -177,9 +188,10 @@
             var imageContent='';
             
                 for(var i=(filteredData.length-1);i>=0;i--){
+                    let titleLength= filteredData[i].title.length > 10 ? `<marquee direction="left">${filteredData[i].title}</marquee>` : `<h5>${filteredData[i].title}</h5>`;   
                  imageContent+=`<div id="${filteredData[i].id}" class="col-xs-12 col-sm-6 col-md-3 col-lg-2">
                                  <img class="img-fluid img-thumbnail" style="width:100%;height:200px" src="{{env('IMG_URL').'/'}}${filteredData[i].img_url}"  alt="${filteredData[i].title}" >
-                                 <h5>${filteredData[i].title}</h5>
+                                 ${titleLength}
                                  <i ref="${filteredData[i].id}" style="margin-top:3px;margin-bottom:3px" type="delete_knws" ref="105" class="btn btn-danger btn-sm fas fa-trash-alt">&nbsp;Remove</i> 
              
                              </div>`;
